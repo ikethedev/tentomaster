@@ -53,7 +53,7 @@ body{
 }
 /* header css */
 
-header{
+.main_header{
   padding: 1em;
 }
 
@@ -115,12 +115,12 @@ h1{
     padding: .5em;
   }
 
-  .plus{
+  .icon{
     width: 24px;
     opacity: 0.3;
   }
 
-  .plus:hover{
+  .icon:hover{
     cursor: pointer;
   }
 
@@ -140,3 +140,57 @@ h1{
   }
 
 /* Modal styiling  */
+#modal{
+  padding: 1em;
+  background-color: #fff;
+  border-radius: 16px 16px 0 0;
+  position: absolute; 
+  width: 100%;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.modal_overlay{
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  opacity: 0.1;
+  z-index: -1000;
+}
+
+.modal_header{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+}
+
+h3{
+  font-weight: 400;
+}
+
+button{
+  background: transparent;
+  border: none;
+  font-size: 1.06rem;
+  font-weight: 600;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8em;
+}
+
+label{
+  margin-bottom: .5em;
+}
+
+input{
+  border: none;
+  border-radius: 9px;
+  padding: .5em;
+  background-color: rgba(217, 217, 217, 0.3);
+
+}
