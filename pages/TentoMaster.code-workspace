@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "TentoMaster",
+			"path": "../../TentoMaster"
+		},
+		{
+			"name": "assets",
+			"path": "../../Downloads/tentomaster-main/assets"
+		}
+	],
+	"settings": {}
+}
