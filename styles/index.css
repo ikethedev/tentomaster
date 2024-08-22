@@ -1,9 +1,4 @@
-/* header css */
 
-.main_header {
-  display: flex;
-  padding: 1em 0 0 4em;
-}
 
 /* main css */
 main {
@@ -11,7 +6,6 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1em;
   grid-column: 1 / -1;
 }
 
@@ -59,14 +53,6 @@ main {
   width: 48px;
   height: 48px;
   padding: 0.5em;
-}
-
-.add_progress_container {
-  display: flex;
-  gap: 0.5em;
-  padding: 1em 0 0 4em;
-  grid-column: 1/ -1;
-  align-items: center;
 }
 
 p {
