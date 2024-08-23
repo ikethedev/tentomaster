@@ -107,26 +107,7 @@ h3 {
   font-weight: 400;
 }
 
-button {
-  background: transparent;
-  border: none;
-  font-size: 1.06rem;
-  font-weight: 600;
-}
 
-form {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 8em;
-}
 
-label {
-  margin-bottom: 0.5em;
-}
 
-input {
-  border: none;
-  border-radius: 9px;
-  padding: 0.5em;
-  background-color: rgba(217, 217, 217, 0.3);
-}
+
