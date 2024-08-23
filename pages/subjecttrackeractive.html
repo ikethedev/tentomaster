@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subject Tracker (No data)</title>
+    <link rel="stylesheet" href="../styles/common.css" />
+    <link rel="stylesheet" href="../styles/subjecttracker.css" />
+  </head>
+  <body>
+    <header class="container main_header">
+      <div class="subject_tracker_container">
+        <img
+          class="icon"
+          src="../images/assets/subjecttracker/backarrow.svg"
+          alt="navigate back to the homepages"
+        />
+        <div class="flex subject">
+          <h1>English</h1>
+          <div class="flex options_container">
+            <img class="icon" src="../images/assets/general/add.svg" alt="" />
+            <img
+              class="icon"
+              src="../images/assets/subjecttracker/setting.svg"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="container">
+      <section class="weekly_review">
+        <p>
+          <span class="uppercase lighter_text">This week </span> <br />
+          <strong>7</strong> <br />
+          <span class="lighter_text"> out of 100 </span>
+        </p>
+      </section>
+      <section>
+        <h2 class="uppercase">History</h2>
+        <article class="class_review flex">
+          <p class="date light_text">October 21, 2024</p>
+          <p class="task_description">
+            I learned about the difference between adjectives and verbs
+          </p>
+          <p class="sudent_rating">
+            <span class="lighter_text">Rate</span>
+            <span class="light_text">7</span>
+            <span class="lighter_text">out of </span>
+            <span class="light_text">10</span>
+          </p>
+        </article>
+        <div class="spacer"></div>
+        <article class="class_review flex">
+          <p class="date light_text">October 21, 2024</p>
+          <p class="task_description">
+            I learned about the difference between adjectives and verbs
+          </p>
+          <p class="sudent_rating">
+            <span class="lighter_text">Rate</span>
+            <span class="light_text">7</span>
+            <span class="lighter_text">out of </span>
+            <span class="light_text">10</span>
+          </p>
+        </article>
+        <div class="spacer"></div>
+        <article class="class_review flex">
+          <p class="date light_text">October 21, 2024</p>
+          <p class="task_description">
+            I learned about the difference between adjectives and verbs
+          </p>
+          <p class="sudent_rating">
+            <span class="lighter_text">Rate</span>
+            <span class="light_text">7</span>
+            <span class="lighter_text">out of </span>
+            <span class="light_text">10</span>
+          </p>
+        </article>
+        <div class="spacer"></div>
+        <article class="class_review flex">
+          <p class="date light_text">October 21, 2024</p>
+          <p class="task_description">
+            I learned about the difference between adjectives and verbs
+          </p>
+          <p class="sudent_rating">
+            <span class="lighter_text">Rate</span>
+            <span class="light_text">7</span>
+            <span class="lighter_text">out of </span>
+            <span class="light_text">10</span>
+          </p>
+        </article>
+        <div class="spacer"></div>
+        <article class="class_review flex">
+          <p class="date light_text">October 21, 2024</p>
+          <p class="task_description">
+            I learned about the difference between adjectives and verbs
+          </p>
+          <p class="sudent_rating">
+            <span class="lighter_text">Rate</span>
+            <span class="light_text">7</span>
+            <span class="lighter_text">out of </span>
+            <span class="light_text">10</span>
+          </p>
+        </article>
+        <div class="spacer"></div>
+        <article class="class_review flex">
+          <p class="date light_text">October 21, 2024</p>
+          <p class="task_description">
+            I learned about the difference between adjectives and verbs
+          </p>
+          <p class="sudent_rating">
+            <span class="lighter_text">Rate</span>
+            <span class="light_text">7</span>
+            <span class="lighter_text">out of </span>
+            <span class="light_text">10</span>
+          </p>
+        </article>
+        <div class="spacer"></div>
+      </section>
+    </main>
+    <section class="modal_overlay hidden"></section>
+    <section id="modal" class="hidden">
+      <header class="modal_header">
+        <svg
+          id="exit"
+          class="icon"
+          width="100%"
+          height="100%"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 6L6 18M6 6L18 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <h3>Edit Tracker</h3>
+        <button id="save">Save</button>
+      </header>
+      <form action="">
+        <label for="subject">Name</label>
+        <input
+          type="text"
+          placeholder="English"
+          name="subject"
+        />
+        <span class="delete_container flex"><img class="icon" src="../images/assets/subjecttracker/delete.svg" alt=""> Delete Tracker </span>
+      </form>
+      
+    </section>
+
+    <!-- Modal Ends -->
+  </body>
+</html>
