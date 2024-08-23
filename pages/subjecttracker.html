@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subject Tracker (Empty)</title>
+    <link rel="stylesheet" href="../styles/common.css" />
+    <link rel="stylesheet" href="../styles/subjecttracker.css" />
+    <link rel="stylesheet" href="../styles/index.css" />
+  </head>
+  <body>
+    <header class="container main_header">
+      <div class="subject_tracker_container">
+        <img
+          class="icon"
+          src="../images/assets/subjecttracker/backarrow.svg"
+          alt="navigate back to the homepages"
+        />
+        <div class="flex subject">
+          <h1>English</h1>
+          <div class="flex options_container">
+            <img class="icon" src="../images/assets/general/add.svg" alt="" />
+            <img
+              class="icon"
+              src="../images/assets/subjecttracker/setting.svg"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="tracker_container">
+        <article class="circle-container">
+          <div class="circle circle_large"></div>
+          <div class="circle circle_medium"></div>
+          <div class="circle circle_small"></div>
+          <picture>
+            <img
+              class="trendingup"
+              src="../images/assets/subjecttracker/graph.svg"
+              alt="An illustration of a progress arrow while data tracking container is empty"
+            />
+          </picture>
+        </article>
+        <p>There are no active progress trackers.</p>
+      </section>
+    </main>
+
+    <!-- Modal Starts -->
+    <section class="modal_overlay hidden"></section>
+    <section id="modal" class="hidden">
+      <header class="modal_header">
+        <svg
+          id="exit"
+          class="icon"
+          width="100%"
+          height="100%"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 6L6 18M6 6L18 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <h3>New Tracker</h3>
+        <button id="create">Create</button>
+      </header>
+      <form action="">
+        <label for="subject">Name</label>
+        <input
+          type="text"
+          placeholder="Which subject would you like to track"
+          name="subject"
+        />
+      </form>
+    </section>
+
+    <!-- Modal Ends -->
+
+    <!-- Add modal starts -->
+    <section id="add_modal" class="hidden">
+      <header class="modal_header">
+        <svg
+          id="exit"
+          class="icon"
+          width="100%"
+          height="100%"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 6L6 18M6 6L18 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <h3>New Progress</h3>
+        <button id="save">Save</button>
+      </header>
+      <form action="">
+        <label>Rating: 5 of of 10</label>
+        <input
+          type="range"
+          min="0"
+          max="10"
+          value="5"
+          class="slider"
+          id="rating-slider"
+        />
+        <div class="slider-handle ten"></div>
+        <div class="slider-handle twenty"></div>
+        <div class="slider-handle thirty"></div>
+        <div class="slider-handle forty"></div>
+        <div class="slider-handle fifty"></div>
+        <div class="slider-handle sixty"></div>
+        <div class="slider-handle seventy"></div>
+        <div class="slider-handle eighty"></div>
+        <div class="slider-handle ninty"></div>
+        <label for="comment">Comment (optional)</label>
+        <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+      </form>
+    </section>
+
+    <!-- Modal Ends -->
+    <!-- add modal ends -->
+  </body>
+</html>
