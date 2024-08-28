@@ -1,4 +1,4 @@
-.subject_tracker{
+.header__subject-tracker{
     width: 100%;
     display: flex;
     align-items: center;
@@ -11,6 +11,8 @@
     position: relative;
     width: fit-content;
     padding: .5em;
+    align-self: center;
+    margin-right: 1em;
 }
 
 .background{
@@ -49,8 +51,19 @@ hr{
     margin: 1% 0;
 }
 
-.subect_review{
+.tracker{
+    align-items: start;
+    row-gap: 1em;
+}
+
+.tracker__subject{
+    display: flex;
+    justify-content: start;
+}
+
+.tracker__subject-review{
     width: 100%;
+
 
 }
 
