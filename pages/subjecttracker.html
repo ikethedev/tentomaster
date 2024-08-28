@@ -9,35 +9,35 @@
     <link rel="stylesheet" href="../styles/index.css" />
   </head>
   <body>
-    <header class="container main_header">
-      <div class="subject_tracker_container">
+    <header class="container header">
+      <div class="header__subject-tracker">
         <img
           class="icon"
           src="../images/assets/subjecttracker/backarrow.svg"
           alt="navigate back to the homepages"
         />
-        <div class="flex subject">
-          <h1>English</h1>
-          <div class="flex options_container">
-            <img class="icon" src="../images/assets/general/add.svg" alt="" />
+        <div class="flex header__subject">
+          <h1 class="header__title">English</h1>
+          <div class="flex header__options-container">
+            <img class="icon" src="../images/assets/general/add.svg" alt="add a new subject to tracker" />
             <img
-              class="icon"
+              class="icon" 
               src="../images/assets/subjecttracker/setting.svg"
-              alt=""
+              alt="change subject tracker settings"
             />
           </div>
         </div>
       </div>
     </header>
     <main>
-      <section class="tracker_container">
-        <article class="circle-container">
-          <div class="circle circle_large"></div>
-          <div class="circle circle_medium"></div>
-          <div class="circle circle_small"></div>
+      <section class="tracker">
+        <article class="tracker__circle-container">
+          <div class="tracker__circle tracker__circle--large"></div>
+          <div class="tracker__circle tracker__circle--medium"></div>
+          <div class="tracker__circle tracker__circle--small"></div>
           <picture>
             <img
-              class="trendingup"
+              class="tracker__image"
               src="../images/assets/subjecttracker/graph.svg"
               alt="An illustration of a progress arrow while data tracking container is empty"
             />
@@ -85,7 +85,7 @@
 
     <!-- Add modal starts -->
     <section id="add_modal" class="hidden">
-      <header class="modal_header">
+      <header class="modal__header">
         <svg
           id="exit"
           class="icon"
@@ -104,18 +104,21 @@
           />
         </svg>
         <h3>New Progress</h3>
-        <button id="save">Save</button>
+        <button id="save" class="modal__button ">Save</button>
       </header>
       <form action="">
         <label>Rating: 5 of of 10</label>
-        <input
+        <div class="slider">
+          <input
           type="range"
           min="0"
           max="10"
           value="5"
-          class="slider"
+          class="slider__input"
           id="rating-slider"
         />
+        </div>
+       
         <div class="slider-handle ten"></div>
         <div class="slider-handle twenty"></div>
         <div class="slider-handle thirty"></div>

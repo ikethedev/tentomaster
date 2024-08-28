@@ -4,35 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ten to Master</title>
-    <link rel="stylesheet" href="/styles/common.css">
-    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="/styles/common.css" />
+    <link rel="stylesheet" href="../styles/homepagecommon.css" />
   </head>
 
   <body>
-    <header class="main_header">
-      <h1>Progress</h1>
+    <header class="header">
+      <h1 class="header__title">Progress</h1>
     </header>
     <main>
-      <section class="tracker_container">
-        <article class="circle-container">
-          <div class="circle circle_large"></div>
-          <div class="circle circle_medium"></div>
-          <div class="circle circle_small"></div>
+      <section class="tracker">
+        <article class="tracker__circle-container">
+          <div class="tracker__circle tracker__circle--large"></div>
+          <div class="tracker__circle tracker__circle--medium"></div>
+          <div class="tracker__circle tracker__circle--small"></div>
           <picture>
             <img
-              class="trendingup"
-              src="../assets/images/trendingup.svg"
+              class="tracker__image"
+              src="../images/assets/homepage/trendinguphome.svg"
               alt="An illustration of a progress arrow while data tracking container is empty"
             />
           </picture>
         </article>
-        <p>There are no active progress trackers.</p>
+        <p class="tracker__message">There are no active progress trackers.</p>
       </section>
     </main>
-    <section class="add_progress_container">
+    <section class="add_progress">
       <svg
-        id="add_tracker"
-        class="icon"
+        id="add_icon"
+        class="add-progress__icon icon"
         width="100%"
         height="100%"
         viewBox="0 0 24 24"
@@ -47,15 +47,15 @@
           stroke-linejoin="round"
         />
       </svg>
-      <h2>New Progress Tracker</h2>
+      <h2 class="add-progress__title">New Progress Tracker</h2>
     </section>
     <!-- Modal Starts -->
-    <section class="modal_overlay" class="hidden"></section>
+    <section class="modal_overlay hidden"></section>
     <section id="modal" class="hidden">
-      <header class="modal_header">
+      <header class="modal__header">
         <svg
           id="exit"
-          class="icon"
+          class="icon modal__icon--exit"
           width="100%"
           height="100%"
           viewBox="0 0 24 24"
@@ -70,12 +70,13 @@
             stroke-linejoin="round"
           />
         </svg>
-        <h3>New Tracker</h3>
-        <button id="create">Create</button>
+        <h3 class="modal__title">New Tracker</h3>
+        <button id="create" class="modal__button">Create</button>
       </header>
       <form action="">
         <label for="subject">Name</label>
         <input
+          class="modal__input"
           type="text"
           placeholder="Which subject would you like to track"
           name="subject"
