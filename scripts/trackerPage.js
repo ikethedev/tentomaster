@@ -1,37 +1,46 @@
-const trackerHomePage = new HomePage()
-
-const subjectTopBar = new TopBarSubject();
-subjectTopBar.setSubjectTitle("math");
-
-const average = new DataReview();
-average.setAverage("93");
-
-const lessonReview = new ReviewLog();
-lessonReview.setLessonDate("Sept 3, 2024")
-lessonReview.setLessonDescription("This is a description of the lesson.");
-lessonReview.setStudentRating("8");
-
+import TopBarSubject from "./topbarSubject.js"
+import DataReview from "./dataReview.js"
+import ReviewLog from "./reviewLog.js"
 const trackerReviewPage = document.createElement("template")
 trackerReviewPage.innerHTML = `
-
+    <div class="tracker__Review-page">
+        <div class="tracker__Review-TopBar"></div>
+        <div class="tracker__Average"></div>
+        <div class="tracker__Review-Content"></div>
+    </div>
 `
 
-class TrackerPage{
-    constructor(){
-        this.rootElement = trackerReviewPage.content.cloneNode(true)
-        this.render = this.render.bind(this)
+export default class TrackerPage{
+    constructor(data){
+        this.rootElement = document.createElement("div");
+        this.rootElement.appendChild(trackerReviewPage.content.cloneNode(true));
+        this.render = this.render.bind(this);
         this.body = document.querySelector("body")
-    }
+        this.subjectTopBar = new TopBarSubject(data);
+        this.subjectTopBar.setSubjectTitle(data.name);
+        this.average = new DataReview();
+        this.average.setAverage("7");
+        this.addReviewForSubject(data.reviews);   
+    } 
 
     render(){
         this.body.innerHTML = '';
-        this.rootElement.appendChild(subjectTopBar.render())
-        this.rootElement.appendChild(average.render())
-        this.rootElement.appendChild(lessonReview.render())
+        this.rootElement.querySelector(".tracker__Review-TopBar").appendChild(this.subjectTopBar.render());
+        this.rootElement.querySelector(".tracker__Average").appendChild(this.average.render());
         this.body.appendChild(this.rootElement);
-        return this.rootElement
+        return this.rootElement;
     }
 
+    addReviewForSubject(reviewLogs){
+        reviewLogs.map(review => {
+            const lessonReview = new ReviewLog();
+            lessonReview.setLessonTopic(review.topic)
+            lessonReview.setLessonDate(review.date);
+            lessonReview.setLessonDescription(review.description);
+            lessonReview.setLessonScore(review.score);
+            this.rootElement.querySelector(".tracker__Review-Content").appendChild(lessonReview.render());
+        });
+      }      
 }
 
 

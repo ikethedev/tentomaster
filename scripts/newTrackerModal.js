@@ -34,16 +34,16 @@ modalTemplate.innerHTML = `
     </section>
 `
 
-class Modal {
+class NewTrackerModal {
     constructor(){
-        this.rootElement = modalTemplate.content.cloneNode(true)
+        this.rootElement = modalTemplate.content.cloneNode(true);
     }
 
     render(){
-        return this.rootElement 
+        return this.rootElement;
     }
 
     close(){
-        this.rootElement.remove()
+        this.rootElement.remove();
     }
 }

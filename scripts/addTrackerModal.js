@@ -1,3 +1,5 @@
+import { appData } from "./appData.js"
+import HomePage from "./homePage.js"
 const addTrackerModalTemplate =  document.createElement('template')
 addTrackerModalTemplate.innerHTML = ` 
     <!-- Modal Starts -->
@@ -24,9 +26,11 @@ addTrackerModalTemplate.innerHTML = `
         <h3>New Tracker</h3>
         <button id="create">Create</button>
     </header>
-    <form action="">
+    <form action="" class="tracker">
         <label for="subject">Name</label>
         <input
+        id="tracker__subject"
+        class="tracker__subject"
         type="text"
         placeholder="Which subject would you like to track"
         name="subject"
@@ -37,48 +41,47 @@ addTrackerModalTemplate.innerHTML = `
     <!-- Modal Ends -->
 `
 
-class AddTrackerModal {
+// add modals that live on the home page that adds a tracker to the tracker contianer
+ export default class AddTrackerModal {
     constructor(){
-        this.rootElement = document.createElement('div')
-        this.rootElement.appendChild(addTrackerModalTemplate.content.cloneNode(true))
-        this.exitIcon = this.rootElement.querySelector('#exit__icon')
-        this.createTracker = this.rootElement.querySelector('#create')
-        this.addModal = this.rootElement.querySelector('#add__modal')
-        // this.closeModal = this.closeModal.bind(this)
-        // this.addTracker = this.addTracker.bind(this)
-
+        this.rootElement = document.createElement('div');
+        this.rootElement.appendChild(addTrackerModalTemplate.content.cloneNode(true));
+        this.exitIcon = this.rootElement.querySelector('#exit__icon');
+        this.createTracker = this.rootElement.querySelector('#create');
+        this.addModal = this.rootElement.querySelector('#add__modal');
+        this.trackerSubject = this.rootElement.querySelector('#tracker__subject');
         this.exitIcon.addEventListener('click', () => {
-            this.closeModal()
-        })
+            this.closeModal();
+        });
         this.createTracker.addEventListener('click', () => {
-            this.addTracker()
-        })
+            this.addTracker();
+        });
         
     }
 
     render(){{
-        return this.rootElement
-    }}
+        return this.rootElement;
+    }};
 
     addTracker(){
-        alert("Tracker Added")
-        this.rootElement.remove()  
-    }
-
+        appData.addSubject({subject: this.trackerSubject.value});
+        this.rootElement.remove();  
+        const home = new HomePage();
+        home.renderTrackers();
+    };
 
     closeModal(){
-        this.body = document.querySelector('body')
-        this.rootElement.remove()
-    }
+        this.body = document.querySelector('body');
+        this.rootElement.remove();
+    };
 
     openModal(){
-        this.body = document.querySelector('body')
-        this.body.appendChild(this.rootElement)
-        this.addModal.classList.remove('hidden')
-        console.log('tracker added')
-    }
+        this.body = document.querySelector('body');
+        this.body.appendChild(this.rootElement);
+        this.addModal.classList.remove('hidden');
+    };
     
-}
+};
 
 
 

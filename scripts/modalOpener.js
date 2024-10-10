@@ -1,4 +1,4 @@
-
+import AddTrackerModal from "./addTrackerModal.js";
 
 const modalOpenerTemplate = document.createElement('template');
 modalOpenerTemplate.innerHTML = ` 
@@ -12,7 +12,7 @@ modalOpenerTemplate.innerHTML = `
     </section>
 `
 
-class ModalOpener{
+export default class ModalOpener{
     constructor(){
         this.rootElement = modalOpenerTemplate.content.cloneNode(true);
         this.addIcon = this.rootElement.querySelector('#add_tracker');
@@ -26,13 +26,11 @@ class ModalOpener{
     }
 
     openModal(){
-        const modal = new AddTrackerModal()
-        modal.openModal()
- 
+        const modal = new AddTrackerModal();
+        modal.openModal();
     }
 
 }
 
 
 
-console.log('modalopener.js loaded');

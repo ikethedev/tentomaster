@@ -1,3 +1,6 @@
+import ReviewLog from "./reviewLog.js";
+import { appData } from "./appData.js";
+
 const topbarSubjectAddModalTemplate = document.createElement("template");
 topbarSubjectAddModalTemplate.innerHTML = `
     <section id="add_modal" class="hidden">
@@ -22,6 +25,8 @@ topbarSubjectAddModalTemplate.innerHTML = `
             <button id="save__icon">Save</button>
         </header>
         <form action="">
+        <label>Lesson Objective</label>
+        <input type="text" name="" id="objective" />
         <label>Rating: 5 of of 10</label>
         <div class="slider__container">
             <input
@@ -30,7 +35,7 @@ topbarSubjectAddModalTemplate.innerHTML = `
             max="10"
             value="5"
             class="slider"
-            id="rating-slider"
+            id="rating__slider"
             />
             <div class="slider-handle ten"></div>
             <div class="slider-handle twenty"></div>
@@ -42,45 +47,60 @@ topbarSubjectAddModalTemplate.innerHTML = `
             <div class="slider-handle eighty"></div>
             <div class="slider-handle ninty"></div>
         </div>
-        <label for="comment">Comment (optional)</label>
+        <label for="comment"> Comment </label>
         <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
         </form>
     </section>
 `
 
-class SubjectAddModal{
-    constructor(){
-        this.rootElement = document.createElement("div")
-        this.rootElement.appendChild(topbarSubjectAddModalTemplate.content.cloneNode(true))
-        this.openModal = this.openModal.bind(this)
-        this.saveIcon = this.rootElement.querySelector("#save__icon");
-        this.exitIcon = this.rootElement.querySelector(".exit__icon");
-        this.exitIcon.addEventListener("click", () => {
-            this.closeModal()
-        });
 
+export default class SubjectAddModal{
+    constructor(data){
+        this.data = data;
+        this.rootElement = document.createElement("div");
+        this.rootElement.appendChild(topbarSubjectAddModalTemplate.content.cloneNode(true));
+        this.objective = this.rootElement.querySelector("#objective");
+        this.score = this.rootElement.querySelector("#rating__slider");
+        this.comment = this.rootElement.querySelector("#comment");
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+        this.saveIcon = this.rootElement.querySelector("#save__icon");
+        this.exitIcon = this.rootElement.querySelector(".exit__icon"); 
         this.saveIcon.addEventListener("click", () => {
-            this.saveLog()
-        })
-    }
+            this.saveLog();
+        });
+        this.exitIcon.addEventListener("click", () => {
+            this.closeModal();
+        });     
+
+    };
 
   
     openModal(){
         this.body = document.querySelector("body");
-        this.body.appendChild(this.rootElement)
-        console.log(this.rootElement)
-        this.add = this.rootElement.querySelector("#add_modal")
-        this.add.classList.remove("hidden")
-  
-    }
+        this.body.appendChild(this.rootElement);
+        this.add = this.rootElement.querySelector("#add_modal");
+        this.add.classList.remove("hidden");
+    };
 
     saveLog(){
-        alert("Log Saved")
-        this.rootElement.remove()
-    }
+        document.querySelector(".tracker__Review-Content").innerHTML = '';
+        appData.addReviewForSubject(this.data.id, this.objective.value, this.comment.value, this.score.value);
+        const subjectReviews = this.data.reviews;
+        subjectReviews.forEach(review => {
+                  const reviewLog = new ReviewLog();
+                    reviewLog.setLessonTopic(review.description);
+                    reviewLog.setLessonDescription(review.comment);
+                    reviewLog.setLessonScore(review.score);
+                    reviewLog.setLessonDate(review.date);
+                    document.querySelector(".tracker__Review-Content").appendChild(reviewLog.render());
+                    
+                })
+                
+                this.closeModal();
+    };
 
     closeModal(){
-        this.rootElement.remove()
-    
+        this.rootElement.remove();
     }
-}
+};

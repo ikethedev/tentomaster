@@ -23,7 +23,9 @@ addModalTemplate.innerHTML = `
         <button id="save">Save</button>
       </header>
       <form action="">
-      <label>Rating: 5 of of 10</label>
+      <label>Subject</label>
+      <input type="text" placeholder="Description" id="description" />
+      <label>Rating: 0 out of 10</label>
       <div class="slider__container">
         <input
           type="range"
@@ -48,6 +50,7 @@ addModalTemplate.innerHTML = `
     </form>
 `
 
+// add Modals that lives on the subject topbar
 class AddModal{
     constructor(){
         this.rootElement = addModalTemplate.content.cloneNode(true)
@@ -55,6 +58,9 @@ class AddModal{
         this.exitIcon = this.rootElement.querySelector(".exit__icon");
         this.closeAddModal = this.closeModal.bind(this);
         this.exitIcon.addEventListener("click", this.closeModal);
+        this.description = this.rootElement.querySelector("#comment");
+
+        this.description.addEventListener("click", this.addDescription.bind(this));
     }
 
     render(){
@@ -64,6 +70,8 @@ class AddModal{
     closeAddModal(){
         document.querySelector("#add_modal").classList.toggle("hidden")
       }
+      
+  
 }
 
 

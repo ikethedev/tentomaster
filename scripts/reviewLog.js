@@ -1,8 +1,7 @@
-
 const reviewTemplate = document.createElement('template');
 reviewTemplate.innerHTML = `
     <section>
-            <h2 class="uppercase">Math</h2>
+            <h2 class="uppercase">Fraction addition</h2>
             <article class="class_review flex">
             <p class="date light_text">October 21, 2024</p>
             <p class="task_description">
@@ -10,7 +9,7 @@ reviewTemplate.innerHTML = `
             </p>
             <p class="sudent_rating">
                 <span class="lighter_text">Rate</span>
-                <span class="light_text student__rating">7</span>
+                <span class="light_text student__score">7</span>
                 <span class="lighter_text">out of </span>
                 <span class="light_text">10</span>
             </p>
@@ -19,8 +18,8 @@ reviewTemplate.innerHTML = `
     </section>
 `
 
-class ReviewLog{
-    constructor(){
+export default class ReviewLog{
+    constructor(data){
         this.rootElement = reviewTemplate.content.cloneNode(true);
     }
 
@@ -40,8 +39,8 @@ class ReviewLog{
         this.rootElement.querySelector(".task_description").textContent = description;
     }
 
-    setStudentRating(rating){
-        this.rootElement.querySelector(".student__rating").textContent = rating;
+    setLessonScore(score){
+        this.rootElement.querySelector(".student__score").textContent = score;
     }
 }
 

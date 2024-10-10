@@ -1,3 +1,7 @@
+import SubjectTopBar from "./topbarSubject.js"
+
+import { appData } from "./appData.js";
+
 const settingdModalTemplate = document.createElement('template');
 settingdModalTemplate.innerHTML = `
     <section class="modal_overlay hidden"></section>
@@ -25,7 +29,7 @@ settingdModalTemplate.innerHTML = `
     </header>
     <form action="">
         <label for="subject">Name</label>
-        <input type="text" placeholder="English" name="subject" />
+        <input type="text" placeholder="English" name="subject" id="subject__change"/>
         <span id="delete__container" class="delete__container flex"
         ><img
             id="delete__icon"
@@ -41,54 +45,62 @@ settingdModalTemplate.innerHTML = `
 <!-- Modal Ends -->
 `
 
-class settingsModal {
-    constructor() {
-        this.rootElement = document.createElement("div")
-        this.rootElement.appendChild(settingdModalTemplate.content.cloneNode(true))
-        this.deleteIcon = this.rootElement.querySelector("#delete__container")
-        this.exitIcon = this.rootElement.querySelector("#exit__icon")
-        this.saveIcon = this.rootElement.querySelector("#save__icon")
+export default class SettingsModal {
+    constructor(data) {
+        this.rootElement = document.createElement("div");
+        this.rootElement.appendChild(settingdModalTemplate.content.cloneNode(true));
+        this.changeSubject = this.rootElement.querySelector("#subject__change");
+        this.deleteIcon = this.rootElement.querySelector("#delete__container");
+        this.exitIcon = this.rootElement.querySelector("#exit__icon");
+        this.saveIcon = this.rootElement.querySelector("#save__icon");
         this.showModal = this.showModal.bind(this);
-
+        console.log(data)
         this.exitIcon.addEventListener("click", () => {
-            this.closeModal()
+            this.closeModal();
         })
 
         this.saveIcon.addEventListener("click", () => {
-            this.saveChanges()
+            this.saveChanges(data);
         })
 
         this.deleteIcon.addEventListener("click", () => {
-            this.deleteTracker()
+            this.deleteTracker();
         })
     }
 
     render() {
-        return this.rootElement
+        return this.rootElement;
     }
 
     showModal(){{
-        console.log("show modal")
-        this.body = document.querySelector("body")
-        this.body.appendChild(this.rootElement)
-        this.settingsModal = this.rootElement.querySelector("#settings__modal")
-        this.settingsModal.classList.remove("hidden")
-       
+        this.body = document.querySelector("body");
+        this.body.appendChild(this.rootElement);
+        this.settingsModal = this.rootElement.querySelector("#settings__modal");
+        this.settingsModal.classList.remove("hidden");
     }}
 
     closeModal(){
-        this.rootElement.remove()
-        this.settingsModal = this.rootElement.querySelector("#settings__modal")
-        this.settingsModal.classList.remove("hidden")
+        this.rootElement.remove();
+        this.settingsModal = this.rootElement.querySelector("#settings__modal");
+        this.settingsModal.classList.remove("hidden");
     }
 
-    saveChanges(){
-        alert("Changes Saved")
-        this.rootElement.remove()
+    saveChanges(data){
+        const id = data.id
+        appData.subject[id].name = this.changeSubject.value
+        const topBarTitle = new SubjectTopBar()
+        const subjects = JSON.parse(localStorage.getItem("subjects"))
+        subjects.forEach(subject => {
+          if(subject.id === id){
+            subject.name = this.changeSubject.value
+          }
+        });
+        localStorage.setItem('subjects', JSON.stringify(subjects));
+        topBarTitle.setSubjectTitle(this.changeSubject.value)
+        this.rootElement.remove();
     }
 
     deleteTracker(){
-        alert("Tracker Deleted")
-        this.rootElement.remove()
+        this.rootElement.remove();
     }
 }
