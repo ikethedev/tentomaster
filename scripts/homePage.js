@@ -31,8 +31,8 @@ export default class HomePage{
         return this.rootElement;
     }
 
-    renderTrackers(){
-        const subjects = appData.getTrackers();
+    async renderTrackers(){
+        const subjects = await appData.getTrackers();
         document.querySelector('.trackerHomePage__content').innerHTML = "";
         subjects.forEach(subject => {
             const tracker = new Tracker()

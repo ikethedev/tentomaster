@@ -70,13 +70,14 @@ TrackerTemplate.innerHTML = `
       const topBarSubject = new TopBarSubject();
       topBarSubject.setSubjectTitle(this.subject);
       const subject = appData.getSubject(this.id);
+      console.log(subject)
       const trackerPage = new TrackerPage(subject);
       this.body.appendChild(trackerPage.render());
     }
   }
 
-  deleteTracker(e) {
-    const trackers = appData.getTrackers()
+  async deleteTracker(e) {
+    const trackers = await appData.getTrackers()
     if (e.target.parentElement.classList.contains("delete__button")){
       let storedArray = JSON.parse(localStorage.getItem("subjects"));
       let itemToRemoveIndex = null;
