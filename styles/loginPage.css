@@ -1,7 +1,16 @@
+header, main, footer{
+    max-width: 400px;
+    margin: 0 auto;
+}
+
 header{
     text-align: center;    
     padding-top: 191px;
     padding-bottom: 33px;
+}
+
+h1{
+    font-weight: bolder;
 }
 
 input{
