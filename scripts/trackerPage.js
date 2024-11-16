@@ -12,6 +12,7 @@ trackerReviewPage.innerHTML = `
 
 export default class TrackerPage{
     constructor(data){
+        console.log(data)
         this.rootElement = document.createElement("div");
         this.rootElement.appendChild(trackerReviewPage.content.cloneNode(true));
         this.render = this.render.bind(this);

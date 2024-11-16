@@ -3,7 +3,7 @@ import { generateCustomId, generateDate } from "./utilis.js";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics.js";
+import {  getFirestore, collection, addDoc, query, getDocs} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,8 +21,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
+const db = getFirestore(app);
 
 // Firebase setup ends
 
@@ -43,22 +42,35 @@ export default class AppData{
       }
     }
   
-    addSubject(subject){
-      const id = generateCustomId()
-      this.subject[id] = {
-        id: id,
+   async addSubject(subject){
+      const newSubject = {
         name: subject.subject,
         reviews: []
-      } 
-      subjects.push(this.subject[id])
-      localStorage.setItem("subjects", JSON.stringify(subjects))
+      }
+    
+      try {
+        const docRef = await addDoc(collection(db, "subjects"), newSubject);
+        this.subject[docRef.id] = newSubject
+        subjects.push(newSubject)
+        localStorage.setItem("subjects", JSON.stringify(subjects))
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
     }
   
     getSubject(id){
-      return this.subject[id]
+      const subject = this.subject.find(subject => subject.id === id)
+      return subject
     }
   
-    getTrackers(){
+    async getTrackers(){
+        const querySnapshot = await getDocs(collection(db, "subjects"));
+        const subjects = querySnapshot.docs.map(subject => {
+          const formattedSubject = subject.data()
+          formattedSubject.id = subject.id
+          return formattedSubject
+        })
+        this.subject = subjects
         return subjects
     }
     
@@ -91,7 +103,6 @@ export default class AppData{
 
       updateReviewAverage(data){
         document.querySelector(".tracker__Average").innerHTML = "";
-        
         const dataAverage = new DataReview()
         let findAverage = data.reviews.reduce((acc, cur) => acc + cur.score, 0) / data.reviews.length 
         dataAverage.setAverage(findAverage)
