@@ -59,7 +59,6 @@ class AddModal{
         this.closeAddModal = this.closeModal.bind(this);
         this.exitIcon.addEventListener("click", this.closeModal);
         this.description = this.rootElement.querySelector("#comment");
-
         this.description.addEventListener("click", this.addDescription.bind(this));
     }
 
