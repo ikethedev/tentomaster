@@ -64,6 +64,7 @@ export default class SettingsModal {
         })
 
         this.deleteIcon.addEventListener("click", () => {
+            appData.deleteSubject()
             this.deleteTracker();
         })
     }
@@ -101,6 +102,7 @@ export default class SettingsModal {
     }
 
     deleteTracker(){
+
         this.rootElement.remove();
     }
 }

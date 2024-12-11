@@ -13,6 +13,8 @@ trackerReviewPage.innerHTML = `
 export default class TrackerPage{
     constructor(data){
         console.log(data)
+        console.log("TrackerPage data:", data); // Log data being passed to the TrackerPage
+
         this.rootElement = document.createElement("div");
         this.rootElement.appendChild(trackerReviewPage.content.cloneNode(true));
         this.render = this.render.bind(this);
@@ -24,7 +26,13 @@ export default class TrackerPage{
         this.addReviewForSubject(data.reviews);   
     } 
 
+    setData(data){
+        console.log(data)
+    }
+   
+
     render(){
+
         this.body.innerHTML = '';
         this.rootElement.querySelector(".tracker__Review-TopBar").appendChild(this.subjectTopBar.render());
         this.rootElement.querySelector(".tracker__Average").appendChild(this.average.render());

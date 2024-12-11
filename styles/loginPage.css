@@ -14,7 +14,9 @@ h1{
 }
 
 input{
-    padding: auto 16px;
+    padding: auto 110px;
+    background-color: transparent;
+
 }
 
 form{
